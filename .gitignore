@@ -1,0 +1,10 @@
+/node_modules
+/temp
+.env
+ormconfig.json
+
+/dist
+tmp/*
+!tmp/.gitkeep
+/coverage
+coverage
