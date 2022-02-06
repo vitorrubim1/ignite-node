@@ -5,6 +5,7 @@ interface ICreateCategoriesDTO {
   description: string;
 }
 
+// O repositório é o responsável por ter os métodos que haverá nesse contexto
 class CategoriesRepository {
   private categories: Category[];
 
