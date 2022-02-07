@@ -17,5 +17,4 @@ class PostgresCategoriesRepository implements ICategoriesRepository {
     console.log(categoryName);
     return null;
   }
-
 };

@@ -1,10 +1,10 @@
 import { Router, Request, Response } from "express";
 
 // Repositório com os métodos
-import { CategoriesRepository } from "../repositories/CategoriesRepository";
+import { CategoriesRepository } from "../modules/cars/repositories/CategoriesRepository";
 
 // Service
-import { CreateCategoryService } from "../services/CreateCategoryService";
+import { CreateCategoryService } from "../modules/cars/services/CreateCategoryService";
 
 // Instâncias
 const categoriesRoutes = Router();
