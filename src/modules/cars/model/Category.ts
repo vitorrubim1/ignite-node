@@ -6,6 +6,7 @@ class Category {
   description: string;
   created_at: Date;
 
+  // Quando essa classe é instanciada o id é gerado automaticamente
   constructor() {
     if (!this.id) {
       this.id = uuid();
