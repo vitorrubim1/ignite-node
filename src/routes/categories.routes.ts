@@ -1,4 +1,4 @@
-import { Router, Request, Response } from "express";
+import { Router } from "express";
 
 // Repositório com os métodos
 import { CategoriesRepository } from "../modules/cars/repositories/CategoriesRepository";
@@ -10,7 +10,7 @@ import { CreateCategoryService } from "../modules/cars/services/CreateCategorySe
 const categoriesRoutes = Router();
 const categoriesRepository = new CategoriesRepository();
 
-categoriesRoutes.post("/", (request: Request, response: Response) => {
+categoriesRoutes.post("/", (request, response) => {
   const { name, description } = request.body;
 
   // Instanciando e executando o service
@@ -20,7 +20,7 @@ categoriesRoutes.post("/", (request: Request, response: Response) => {
   return response.status(201).send();
 });
 
-categoriesRoutes.get("/", (request: Request, response: Response) => {
+categoriesRoutes.get("/", (request, response) => {
   const categories = categoriesRepository.list();
 
   return response.status(201).json(categories);
