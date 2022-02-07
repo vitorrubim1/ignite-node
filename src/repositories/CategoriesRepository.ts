@@ -1,12 +1,10 @@
 import { Category } from "../model/Category";
 
-interface ICreateCategoriesDTO {
-  name: string;
-  description: string;
-}
+// Implementação da interface
+import { ICategoriesRepository } from "./ICategoriesRepository";
 
 // O repositório é o responsável por ter os métodos que haverá nesse contexto
-class CategoriesRepository {
+class CategoriesRepository implements ICategoriesRepository {
   private categories: Category[];
 
   // Inicia a variável quando a classe for instanciada
@@ -17,7 +15,7 @@ class CategoriesRepository {
   /**
    * Métodos
    */
-  create({ name, description }: ICreateCategoriesDTO): void {
+  create({ name, description }): void {
     const category = new Category();
 
     Object.assign(category, {
