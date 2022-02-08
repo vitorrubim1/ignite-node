@@ -7,9 +7,20 @@ import { ICategoriesRepository } from "./ICategoriesRepository";
 class CategoriesRepository implements ICategoriesRepository {
   private categories: Category[];
 
+  private static INSTANCE: CategoriesRepository;
+
   // Inicia a variável quando a classe for instanciada
-  constructor() {
+  private constructor() {
     this.categories = [];
+  }
+
+  // Torno o constructor private e faço uma única instância para que os controller use a mesma
+  public static getInstance(): CategoriesRepository {
+    if (!CategoriesRepository.INSTANCE) {
+      CategoriesRepository.INSTANCE = new CategoriesRepository();
+    }
+
+    return CategoriesRepository.INSTANCE;
   }
 
   /**
