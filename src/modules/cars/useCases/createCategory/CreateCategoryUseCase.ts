@@ -1,5 +1,5 @@
 // Implementação da interface
-import { ICategoriesRepository } from "../repositories/ICategoriesRepository";
+import { ICategoriesRepository } from "../../repositories/ICategoriesRepository";
 
 interface IRequest {
   name: string;
@@ -10,7 +10,7 @@ interface IRequest {
  * O service é responsável por toda regra de negocio (validações, criação...)
  * Ela recebe por parâmetro o repositório que ela irá trabalhar. Que passa a ser o "D" do SOLID
  */
-class CreateCategoryService {
+class CreateCategoryUseCase {
   constructor(private categoriesRepository: ICategoriesRepository) {}
 
   execute({ name, description }: IRequest): void {
@@ -22,4 +22,4 @@ class CreateCategoryService {
   };
 }
 
-export { CreateCategoryService };
+export { CreateCategoryUseCase };
