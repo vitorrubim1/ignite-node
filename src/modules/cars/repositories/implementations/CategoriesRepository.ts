@@ -1,7 +1,7 @@
-import { Category } from "../model/Category";
+import { Category } from "../../model/Category";
 
 // Implementação da interface
-import { ICategoriesRepository } from "./ICategoriesRepository";
+import { ICategoriesRepository } from "../ICategoriesRepository";
 
 // O repositório é o responsável por ter os métodos que haverá nesse contexto
 class CategoriesRepository implements ICategoriesRepository {
