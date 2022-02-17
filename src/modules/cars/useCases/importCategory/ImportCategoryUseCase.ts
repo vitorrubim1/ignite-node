@@ -20,16 +20,17 @@ class ImportCategoryUseCase {
 
       stream.pipe(parseFile);
 
+      // Varredura no arquivo
       parseFile.on("data", async (line) => {
         const [name, description] = line;
 
         categories.push({ name, description });
       })
         .on("end", () => {
+          fs.promises.unlink(file.path); // Dps do arquivo ser lido, remove-o
           resolve(categories);
         })
         .on("error", (err) => reject(err));
-
     })
   }
 
