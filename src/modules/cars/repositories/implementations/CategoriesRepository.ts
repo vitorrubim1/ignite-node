@@ -1,4 +1,4 @@
-import { Category } from "../../model/Category";
+import { Category } from "../../entities/Category";
 
 // Implementação da interface
 import { ICategoriesRepository } from "../ICategoriesRepository";
