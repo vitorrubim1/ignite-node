@@ -1,3 +1,5 @@
+import { getRepository, Repository } from "typeorm";
+
 import { Category } from "../../entities/Category";
 
 // Implementação da interface
@@ -5,13 +7,13 @@ import { ICategoriesRepository } from "../ICategoriesRepository";
 
 // O repositório é o responsável por ter os métodos que haverá nesse contexto
 class CategoriesRepository implements ICategoriesRepository {
-  private categories: Category[];
+  private repository: Repository<Category>;
 
   private static INSTANCE: CategoriesRepository;
 
-  // Inicia a variável quando a classe for instanciada
+  // Informando a qual entidade terei as métodos do typeorm
   private constructor() {
-    this.categories = [];
+    this.repository = getRepository(Category);
   }
 
   // Torno o constructor private e faço uma única instância para que os controller use a mesma
@@ -26,25 +28,20 @@ class CategoriesRepository implements ICategoriesRepository {
   /**
    * Métodos
    */
-  create({ name, description }): void {
-    const category = new Category();
+  async create({ name, description }): Promise<void> {
+    const category = this.repository.create({ name, description });
 
-    Object.assign(category, {
-      name,
-      description,
-      created_at: new Date()
-    })
-
-    this.categories.push(category)
+    await this.repository.save(category);
   }
 
-  list(): Category[] {
-    return this.categories;
+  async list(): Promise<Category[]> {
+    const categories = await this.repository.find();
+
+    return categories;
   }
 
-  findByName(categoryName: string): Category | undefined {
-    const category =
-      this.categories.find((category) => category.name === categoryName);
+  async findByName(categoryName: string): Promise<Category | undefined> {
+    const category = await this.repository.findOne({ name })
 
     return category;
   }
