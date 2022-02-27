@@ -9,21 +9,19 @@ import { ICategoriesRepository } from "../ICategoriesRepository";
 class CategoriesRepository implements ICategoriesRepository {
   private repository: Repository<Category>;
 
-  private static INSTANCE: CategoriesRepository;
-
   // Informando a qual entidade terei as métodos do typeorm
-  private constructor() {
+  constructor() {
     this.repository = getRepository(Category);
   }
 
-  // Torno o constructor private e faço uma única instância para que os controller use a mesma
-  public static getInstance(): CategoriesRepository {
-    if (!CategoriesRepository.INSTANCE) {
-      CategoriesRepository.INSTANCE = new CategoriesRepository();
-    }
+  // // Torno o constructor private e faço uma única instância para que os controller use a mesma
+  // public static getInstance(): CategoriesRepository {
+  //   if (!CategoriesRepository.INSTANCE) {
+  //     CategoriesRepository.INSTANCE = new CategoriesRepository();
+  //   }
 
-    return CategoriesRepository.INSTANCE;
-  }
+  //   return CategoriesRepository.INSTANCE;
+  // }
 
   /**
    * Métodos
@@ -40,7 +38,7 @@ class CategoriesRepository implements ICategoriesRepository {
     return categories;
   }
 
-  async findByName(categoryName: string): Promise<Category | undefined> {
+  async findByName(name: string): Promise<Category | undefined> {
     const category = await this.repository.findOne({ name })
 
     return category;
