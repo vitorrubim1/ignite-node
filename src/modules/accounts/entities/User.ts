@@ -16,11 +16,13 @@ class User {
   password: string;
 
   @Column()
-
   driver_license: string;
-  @Column()
 
+  @Column()
   isAdmin: boolean;
+
+  @Column()
+  avatar: string;
 
   @CreateDateColumn()
   created_at: Date;
