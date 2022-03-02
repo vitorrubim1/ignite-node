@@ -30,6 +30,11 @@ async function ensureAuthenticated(
 
     if (!user) throw new AppError('User does not exist', 401);
 
+    // Adicionando no Request do express, pra que outros lugares tenham acesso ao id do user logado
+    request.user = {
+      id: user_id
+    };
+
     next();
   } catch {
     throw new AppError('Invalid token', 401)
