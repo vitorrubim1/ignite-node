@@ -2,7 +2,7 @@ import { Category } from "../../entities/Category";
 import { ICategoriesRepository, ICreateCategoriesDTO } from "../ICategoriesRepository";
 
 /**
- * Igual ao implementation, porém dados em array
+ * Igual ao implementation, porém dados em array para testes
  */
 
 class CategoriesRepositoryInMemory implements ICategoriesRepository {
