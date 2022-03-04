@@ -1,5 +1,5 @@
-import { Category } from "../../entities/Category";
-import { ICategoriesRepository, ICreateCategoriesDTO } from "../ICategoriesRepository";
+import { Category } from "@modules/cars/entities/Category";
+import { ICategoriesRepository, ICreateCategoriesDTO } from "@modules/cars/repositories/ICategoriesRepository";
 
 /**
  * Igual ao implementation, porém dados em array para testes

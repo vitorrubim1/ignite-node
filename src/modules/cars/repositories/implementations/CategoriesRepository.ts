@@ -1,9 +1,9 @@
 import { getRepository, Repository } from "typeorm";
 
-import { Category } from "../../entities/Category";
+import { Category } from "@modules/cars/entities/Category";
 
 // Implementação da interface
-import { ICategoriesRepository } from "../ICategoriesRepository";
+import { ICategoriesRepository } from "@modules/cars/repositories/ICategoriesRepository";
 
 // O repositório é o responsável por ter os métodos que haverá nesse contexto
 class CategoriesRepository implements ICategoriesRepository {
@@ -13,15 +13,6 @@ class CategoriesRepository implements ICategoriesRepository {
   constructor() {
     this.repository = getRepository(Category);
   }
-
-  // // Torno o constructor private e faço uma única instância para que os controller use a mesma
-  // public static getInstance(): CategoriesRepository {
-  //   if (!CategoriesRepository.INSTANCE) {
-  //     CategoriesRepository.INSTANCE = new CategoriesRepository();
-  //   }
-
-  //   return CategoriesRepository.INSTANCE;
-  // }
 
   /**
    * Métodos

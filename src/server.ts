@@ -3,7 +3,6 @@ import 'express-async-errors';
 import swaggerUI from "swagger-ui-express";
 
 import "./database";
-
 import "./shared/container";
 
 import { AppError } from "./errors/AppError";
