@@ -12,6 +12,10 @@ import { SpecificationRepository } from "@modules/cars/infra/typeorm/repositorie
 import { IUsersRepository } from "@modules/accounts/repositories/IUsersRepository";
 import { UsersRepository } from "@modules/accounts/infra/typeorm/repositories/UsersRepository";
 
+// Car
+import { ICarsRepository } from "@modules/cars/repositories/ICarsRepository";
+import { CarsRepository } from "@modules/cars/infra/typeorm/repositories/CarsRepository";
+
 /** <>: Tipo do container. (""): Qualquer nome pro container. (): Classe do container criado */
 
 // Category
@@ -30,4 +34,10 @@ container.registerSingleton<ISpecificationsRepository>(
 container.registerSingleton<IUsersRepository>(
   "UsersRepository",
   UsersRepository
+);
+
+// Car
+container.registerSingleton<ICarsRepository>(
+  "CarsRepository",
+  CarsRepository
 );
