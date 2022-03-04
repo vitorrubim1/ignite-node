@@ -6,11 +6,7 @@
     "baseUrl": "./src",
     "paths": {
       "@config/*": ["config/*"],
-      "@database/*": ["database/*"],
-      "@errors/*": ["errors/*"],
-      "@middlewares/*": ["middlewares/*"],
       "@modules/*": ["modules/*"],
-      "@routes/*": ["routes/*"],
       "@shared/*": ["shared/*"],
       "@utils/*": ["utils/*"]
     },
