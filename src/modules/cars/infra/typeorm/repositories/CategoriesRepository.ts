@@ -1,9 +1,8 @@
 import { getRepository, Repository } from "typeorm";
 
-import { Category } from "@modules/cars/entities/Category";
-
 // Implementação da interface
 import { ICategoriesRepository } from "@modules/cars/repositories/ICategoriesRepository";
+import { Category } from "@modules/cars/infra/typeorm/entities/Category";
 
 // O repositório é o responsável por ter os métodos que haverá nesse contexto
 class CategoriesRepository implements ICategoriesRepository {
