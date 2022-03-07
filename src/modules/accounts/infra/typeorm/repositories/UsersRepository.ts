@@ -1,8 +1,8 @@
-import { getRepository, Repository } from "typeorm";
+import { getRepository, Repository } from 'typeorm';
 
-import { User } from "@modules/accounts/infra/typeorm/entities/User";
-import { ICreateUserDTO } from "@modules/accounts/dtos/ICreateUserDTO";
-import { IUsersRepository } from "@modules/accounts/repositories/IUsersRepository";
+import { User } from '@modules/accounts/infra/typeorm/entities/User';
+import { ICreateUserDTO } from '@modules/accounts/dtos/ICreateUserDTO';
+import { IUsersRepository } from '@modules/accounts/repositories/IUsersRepository';
 
 class UsersRepository implements IUsersRepository {
   private repository: Repository<User>;
@@ -25,7 +25,7 @@ class UsersRepository implements IUsersRepository {
       email,
       avatar,
       password,
-      driver_license
+      driver_license,
     });
 
     await this.repository.save(user);
@@ -42,6 +42,6 @@ class UsersRepository implements IUsersRepository {
 
     return user;
   }
-};
+}
 
-export { UsersRepository }
+export { UsersRepository };

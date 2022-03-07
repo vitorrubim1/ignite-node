@@ -1,5 +1,5 @@
-import { Category } from "@modules/cars/infra/typeorm/entities/Category";
-import { ICategoriesRepository, ICreateCategoriesDTO } from "@modules/cars/repositories/ICategoriesRepository";
+import { Category } from '@modules/cars/infra/typeorm/entities/Category';
+import { ICategoriesRepository, ICreateCategoriesDTO } from '@modules/cars/repositories/ICategoriesRepository';
 
 /**
  * Igual ao implementation, porém dados em array para testes
@@ -17,17 +17,16 @@ class CategoriesRepositoryInMemory implements ICategoriesRepository {
   }
 
   async list(): Promise<Category[]> {
-    const categories = this.categories;
+    const { categories } = this;
 
     return categories;
   }
 
   async findByName(categoryName: string): Promise<Category> {
-    const category =
-      this.categories.find((category) => category.name === categoryName);
+    const category = this.categories.find((item) => item.name === categoryName);
 
     return category;
   }
-};
+}
 
 export { CategoriesRepositoryInMemory };

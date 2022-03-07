@@ -6,13 +6,13 @@ import { ISpecificationsRepository } from '@modules/cars/repositories/ISpecifica
 @injectable()
 class ListSpecificationUseCase {
   constructor(
-    @inject("SpecificationRepository")
-    private specificationRepository: ISpecificationsRepository
-  ) { };
+    @inject('SpecificationRepository')
+    private specificationRepository: ISpecificationsRepository,
+  ) { }
 
   async execute(): Promise<Specification[]> {
     return await this.specificationRepository.list();
   }
-};
+}
 
 export { ListSpecificationUseCase };

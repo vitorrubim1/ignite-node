@@ -7,13 +7,13 @@ import { ICategoriesRepository } from '@modules/cars/repositories/ICategoriesRep
 interface IImportCategory {
   name: string;
   description: string;
-};
+}
 
 @injectable()
 class ImportCategoryUseCase {
   constructor(
-    @inject("CategoriesRepository")
-    private categoriesRepository: ICategoriesRepository
+    @inject('CategoriesRepository')
+    private categoriesRepository: ICategoriesRepository,
   ) { }
 
   loadCategories(file: Express.Multer.File): Promise<IImportCategory[]> {
@@ -26,31 +26,30 @@ class ImportCategoryUseCase {
       stream.pipe(parseFile);
 
       // Varredura no arquivo
-      parseFile.on("data", async (line) => {
+      parseFile.on('data', async (line) => {
         const [name, description] = line;
 
         categories.push({ name, description });
       })
-        .on("end", () => {
+        .on('end', () => {
           fs.promises.unlink(file.path); // Dps do arquivo ser lido, remove-o
           resolve(categories);
         })
-        .on("error", (err) => reject(err));
-    })
+        .on('error', (err) => reject(err));
+    });
   }
 
   async execute(file: Express.Multer.File): Promise<void> {
     const categories = await this.loadCategories(file);
 
     categories.map(async (category) => {
-      const alreadyExistCategory =
-        await this.categoriesRepository.findByName(category.name);
+      const alreadyExistCategory = await this.categoriesRepository.findByName(category.name);
 
       if (!alreadyExistCategory) {
         await this.categoriesRepository.create(category);
       }
     });
   }
-};
+}
 
 export { ImportCategoryUseCase };

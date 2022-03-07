@@ -1,6 +1,6 @@
-import { User } from "@modules/accounts/infra/typeorm/entities/User";
-import { ICreateUserDTO } from "@modules/accounts/dtos/ICreateUserDTO";
-import { IUsersRepository } from "@modules/accounts/repositories/IUsersRepository";
+import { User } from '@modules/accounts/infra/typeorm/entities/User';
+import { ICreateUserDTO } from '@modules/accounts/dtos/ICreateUserDTO';
+import { IUsersRepository } from '@modules/accounts/repositories/IUsersRepository';
 
 class UsersRepositoryInMemory implements IUsersRepository {
   private users: User[] = [];
@@ -9,11 +9,13 @@ class UsersRepositoryInMemory implements IUsersRepository {
     driver_license,
     email,
     name,
-    password
+    password,
   }: ICreateUserDTO): Promise<void> {
-    const user = new User;
+    const user = new User();
 
-    Object.assign(user, { driver_license, email, name, password });
+    Object.assign(user, {
+      driver_license, email, name, password,
+    });
 
     this.users.push(user);
   }
@@ -25,6 +27,6 @@ class UsersRepositoryInMemory implements IUsersRepository {
   async findById(id: string): Promise<User> {
     return this.users.find((user) => user.id === id);
   }
-};
+}
 
 export { UsersRepositoryInMemory };

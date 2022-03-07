@@ -1,10 +1,10 @@
-import { MigrationInterface, QueryRunner, Table } from "typeorm";
+import { MigrationInterface, QueryRunner, Table } from 'typeorm';
 
 export class CreateCars1646407612038 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
-        name: "cars",
+        name: 'cars',
         columns: [
           { name: 'id', type: 'uuid', isPrimary: true },
           { name: 'name', type: 'varchar' },
@@ -15,23 +15,23 @@ export class CreateCars1646407612038 implements MigrationInterface {
           { name: 'fine_amount', type: 'numeric' },
           { name: 'brand', type: 'varchar' },
           { name: 'category_id', type: 'uuid', isNullable: false },
-          { name: 'created_at', type: 'timestamp', default: "now()" },
+          { name: 'created_at', type: 'timestamp', default: 'now()' },
         ],
         foreignKeys: [
           {
-            name: "FKCategoryCar",
-            referencedTableName: "categories",
-            referencedColumnNames: ["id"],
-            columnNames: ["category_id"],
-            onDelete: "SET NULL",
-            onUpdate: "SET NULL",
-          }
+            name: 'FKCategoryCar',
+            referencedTableName: 'categories',
+            referencedColumnNames: ['id'],
+            columnNames: ['category_id'],
+            onDelete: 'SET NULL',
+            onUpdate: 'SET NULL',
+          },
         ],
-      })
-    )
+      }),
+    );
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable("cars");
+    await queryRunner.dropTable('cars');
   }
 }

@@ -1,8 +1,8 @@
-import { getRepository, Repository } from "typeorm";
+import { getRepository, Repository } from 'typeorm';
 
 // Implementação da interface
-import { ICategoriesRepository } from "@modules/cars/repositories/ICategoriesRepository";
-import { Category } from "@modules/cars/infra/typeorm/entities/Category";
+import { ICategoriesRepository } from '@modules/cars/repositories/ICategoriesRepository';
+import { Category } from '@modules/cars/infra/typeorm/entities/Category';
 
 // O repositório é o responsável por ter os métodos que haverá nesse contexto
 class CategoriesRepository implements ICategoriesRepository {
@@ -29,7 +29,7 @@ class CategoriesRepository implements ICategoriesRepository {
   }
 
   async findByName(name: string): Promise<Category | undefined> {
-    const category = await this.repository.findOne({ name })
+    const category = await this.repository.findOne({ name });
 
     return category;
   }

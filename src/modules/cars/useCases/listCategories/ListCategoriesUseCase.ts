@@ -7,8 +7,8 @@ import { ICategoriesRepository } from '@modules/cars/repositories/ICategoriesRep
 class ListCategoriesUseCase {
   constructor(
     @inject('CategoriesRepository')
-    private categoriesRepository: ICategoriesRepository
-  ) { };
+    private categoriesRepository: ICategoriesRepository,
+  ) { }
 
   async execute(): Promise<Category[]> {
     return await this.categoriesRepository.list();

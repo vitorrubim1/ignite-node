@@ -3,5 +3,5 @@ declare namespace Express {
     user: {
       id: string;
     };
-  };
+  }
 }

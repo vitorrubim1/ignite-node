@@ -11,6 +11,6 @@ class ListSpecificationController {
 
     return response.status(201).json(specifications);
   }
-};
+}
 
 export { ListSpecificationController };
