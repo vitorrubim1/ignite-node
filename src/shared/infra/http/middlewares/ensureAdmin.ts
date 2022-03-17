@@ -1,12 +1,12 @@
-import { NextFunction, Request, Response } from 'express';
+import { NextFunction, Request, Response } from "express";
 
-import { AppError } from '@shared/errors/AppError';
-import { UsersRepository } from '@modules/accounts/infra/typeorm/repositories/UsersRepository';
+import { AppError } from "@shared/errors/AppError";
+import { UsersRepository } from "@modules/accounts/infra/typeorm/repositories/UsersRepository";
 
 export async function ensureAdmin(
   request: Request,
   response: Response,
-  next: NextFunction,
+  next: NextFunction
 ) {
   const { id } = request.user;
 

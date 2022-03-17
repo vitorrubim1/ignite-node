@@ -1,6 +1,6 @@
-import { User } from '@modules/accounts/infra/typeorm/entities/User';
-import { ICreateUserDTO } from '@modules/accounts/dtos/ICreateUserDTO';
-import { IUsersRepository } from '@modules/accounts/repositories/IUsersRepository';
+import { User } from "@modules/accounts/infra/typeorm/entities/User";
+import { ICreateUserDTO } from "@modules/accounts/dtos/ICreateUserDTO";
+import { IUsersRepository } from "@modules/accounts/repositories/IUsersRepository";
 
 class UsersRepositoryInMemory implements IUsersRepository {
   private users: User[] = [];
@@ -14,7 +14,10 @@ class UsersRepositoryInMemory implements IUsersRepository {
     const user = new User();
 
     Object.assign(user, {
-      driver_license, email, name, password,
+      driver_license,
+      email,
+      name,
+      password,
     });
 
     this.users.push(user);

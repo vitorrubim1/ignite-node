@@ -1,8 +1,8 @@
-import { parse } from 'csv-parse';
-import fs from 'fs';
-import { inject, injectable } from 'tsyringe';
+import { parse } from "csv-parse";
+import fs from "fs";
+import { inject, injectable } from "tsyringe";
 
-import { ICategoriesRepository } from '@modules/cars/repositories/ICategoriesRepository';
+import { ICategoriesRepository } from "@modules/cars/repositories/ICategoriesRepository";
 
 interface IImportCategory {
   name: string;
@@ -12,9 +12,9 @@ interface IImportCategory {
 @injectable()
 class ImportCategoryUseCase {
   constructor(
-    @inject('CategoriesRepository')
-    private categoriesRepository: ICategoriesRepository,
-  ) { }
+    @inject("CategoriesRepository")
+    private categoriesRepository: ICategoriesRepository
+  ) {}
 
   loadCategories(file: Express.Multer.File): Promise<IImportCategory[]> {
     return new Promise((resolve, reject) => {
@@ -26,16 +26,17 @@ class ImportCategoryUseCase {
       stream.pipe(parseFile);
 
       // Varredura no arquivo
-      parseFile.on('data', async (line) => {
-        const [name, description] = line;
+      parseFile
+        .on("data", async (line) => {
+          const [name, description] = line;
 
-        categories.push({ name, description });
-      })
-        .on('end', () => {
+          categories.push({ name, description });
+        })
+        .on("end", () => {
           fs.promises.unlink(file.path); // Dps do arquivo ser lido, remove-o
           resolve(categories);
         })
-        .on('error', (err) => reject(err));
+        .on("error", (err) => reject(err));
     });
   }
 
@@ -43,7 +44,9 @@ class ImportCategoryUseCase {
     const categories = await this.loadCategories(file);
 
     categories.map(async (category) => {
-      const alreadyExistCategory = await this.categoriesRepository.findByName(category.name);
+      const alreadyExistCategory = await this.categoriesRepository.findByName(
+        category.name
+      );
 
       if (!alreadyExistCategory) {
         await this.categoriesRepository.create(category);

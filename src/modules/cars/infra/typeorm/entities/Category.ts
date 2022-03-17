@@ -1,24 +1,19 @@
-import { v4 as uuid } from 'uuid';
-import {
-  Column,
-  CreateDateColumn,
-  Entity,
-  PrimaryColumn,
-} from 'typeorm';
+import { v4 as uuid } from "uuid";
+import { Column, CreateDateColumn, Entity, PrimaryColumn } from "typeorm";
 
-@Entity('categories')
+@Entity("categories")
 class Category {
   @PrimaryColumn()
-    id?: string;
+  id?: string;
 
   @Column()
-    name: string;
+  name: string;
 
   @Column()
-    description: string;
+  description: string;
 
   @CreateDateColumn()
-    created_at: Date;
+  created_at: Date;
 
   // Quando essa classe é instanciada o id é gerado automaticamente
   constructor() {
