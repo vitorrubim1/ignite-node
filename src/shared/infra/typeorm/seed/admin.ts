@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { v4 as uuid } from "uuid";
 import { hash } from "bcryptjs";
 
@@ -14,7 +15,7 @@ async function create() {
     `
     INSERT INTO USERS(id, name, email, password, "isAdmin", created_at, driver_license)
     values('${id}', 'admin', 'vitor@appcar.com', '${password}', true, 'now()', '123abc456')
-    `
+    `,
   );
 
   await connection.close;
