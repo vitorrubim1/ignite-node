@@ -6,7 +6,7 @@ import { UsersRepository } from "@modules/accounts/infra/typeorm/repositories/Us
 export async function ensureAdmin(
   request: Request,
   response: Response,
-  next: NextFunction
+  next: NextFunction,
 ) {
   const { id } = request.user;
 

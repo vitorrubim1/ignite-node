@@ -11,7 +11,7 @@ interface IPayload {
 async function ensureAuthenticated(
   request: Request,
   response: Response,
-  next: NextFunction
+  next: NextFunction,
 ) {
   const authHeader = request.headers.authorization;
 
@@ -22,7 +22,7 @@ async function ensureAuthenticated(
   try {
     const { sub: user_id } = verify(
       token,
-      "672a135ebf1008a734c1196d00f68e44"
+      "672a135ebf1008a734c1196d00f68e44",
     ) as IPayload;
 
     const usersRepository = new UsersRepository();
