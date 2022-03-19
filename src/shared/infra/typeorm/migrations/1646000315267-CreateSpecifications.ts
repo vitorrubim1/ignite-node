@@ -11,7 +11,7 @@ export class CreateSpecifications1646000315267 implements MigrationInterface {
           { name: "description", type: "varchar" },
           { name: "created_at", type: "timestamp", default: "now()" },
         ],
-      })
+      }),
     );
   }
 

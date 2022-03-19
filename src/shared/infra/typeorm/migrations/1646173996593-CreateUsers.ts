@@ -6,7 +6,7 @@ export class CreateUsers1646173996593 implements MigrationInterface {
       new Table({
         name: "users",
         columns: [
-          { name: "id", type: "uuid" },
+          { name: "id", type: "uuid", isPrimary: true },
           { name: "name", type: "varchar" },
           { name: "username", type: "varchar", isUnique: true },
           { name: "password", type: "varchar" },
@@ -15,7 +15,7 @@ export class CreateUsers1646173996593 implements MigrationInterface {
           { name: "isAdmin", type: "boolean", default: false },
           { name: "created_at", type: "timestamp", default: "now()" },
         ],
-      })
+      }),
     );
   }
 

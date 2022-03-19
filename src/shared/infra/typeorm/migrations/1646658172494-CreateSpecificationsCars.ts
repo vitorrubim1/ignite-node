@@ -17,7 +17,7 @@ export class CreateSpecificationsCars1646658172494
           { name: "specification_id", type: "uuid" },
           { name: "created_at", type: "timestamp", default: "now()" },
         ],
-      })
+      }),
     );
 
     // Foreign keys
@@ -31,7 +31,7 @@ export class CreateSpecificationsCars1646658172494
         columnNames: ["specification_id"],
         onDelete: "SET NULL",
         onUpdate: "SET NULL",
-      })
+      }),
     );
 
     await queryRunner.createForeignKey(
@@ -43,18 +43,18 @@ export class CreateSpecificationsCars1646658172494
         columnNames: ["car_id"],
         onDelete: "SET NULL",
         onUpdate: "SET NULL",
-      })
+      }),
     );
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.dropForeignKey(
       "specifications_cars",
-      "FKCarSpecification"
+      "FKCarSpecification",
     );
     await queryRunner.dropForeignKey(
       "specifications_cars",
-      "FKSpecificationCar"
+      "FKSpecificationCar",
     );
     await queryRunner.dropTable("specifications_cars");
   }
