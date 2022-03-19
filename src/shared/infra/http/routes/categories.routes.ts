@@ -23,7 +23,7 @@ categoriesRoutes.post(
   "/",
   ensureAuthenticated,
   ensureAdmin,
-  createCategoryController.handle
+  createCategoryController.handle,
 );
 categoriesRoutes.get("/", listCategoriesController.handle);
 categoriesRoutes.post(
@@ -31,7 +31,7 @@ categoriesRoutes.post(
   upload.single("file"),
   ensureAuthenticated,
   ensureAdmin,
-  importCategoryController.handle
+  importCategoryController.handle,
 );
 
 export { categoriesRoutes };

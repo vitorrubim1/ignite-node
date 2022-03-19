@@ -16,7 +16,7 @@ specificationsRoutes.post(
   "/",
   ensureAuthenticated,
   ensureAdmin,
-  createSpecificationController.handle
+  createSpecificationController.handle,
 );
 specificationsRoutes.get("/", listSpecificationController.handle);
 
