@@ -1,5 +1,7 @@
 import { container } from "tsyringe";
 
+import "@shared/container/providers";
+
 // Category
 import { ICategoriesRepository } from "@modules/cars/repositories/ICategoriesRepository";
 import { CategoriesRepository } from "@modules/cars/infra/typeorm/repositories/CategoriesRepository";
@@ -19,6 +21,10 @@ import { CarsRepository } from "@modules/cars/infra/typeorm/repositories/CarsRep
 // Upload car images
 import { ICarsImagesRepository } from "@modules/cars/repositories/ICarsImagesRepository";
 import { CarsImagesRepository } from "@modules/cars/infra/typeorm/repositories/CarsImagesRepository";
+
+// Rental
+import { IRentalsRepository } from "@modules/rentals/infra/typeorm/repositories/IRentalsRepository";
+import { RentalsRepository } from "@modules/rentals/repositories/RentalsRepository";
 
 /** <>: Tipo do container. (""): Qualquer nome pro container. (): Classe do container criado */
 
@@ -47,4 +53,10 @@ container.registerSingleton<ICarsRepository>("CarsRepository", CarsRepository);
 container.registerSingleton<ICarsImagesRepository>(
   "CarsImagesRepository",
   CarsImagesRepository,
+);
+
+// Rental
+container.registerSingleton<IRentalsRepository>(
+  "RentalsRepository",
+  RentalsRepository,
 );
