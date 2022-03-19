@@ -10,7 +10,7 @@ describe("Create a Category", () => {
   beforeEach(() => {
     categoriesRepositoryInMemory = new CategoriesRepositoryInMemory();
     createCategoryUseCase = new CreateCategoryUseCase(
-      categoriesRepositoryInMemory
+      categoriesRepositoryInMemory,
     );
   });
 
@@ -27,7 +27,7 @@ describe("Create a Category", () => {
     await createCategoryUseCase.execute(category);
 
     const categoryCreated = await categoriesRepositoryInMemory.findByName(
-      category.name
+      category.name,
     );
 
     expect(categoryCreated).toHaveProperty("id");

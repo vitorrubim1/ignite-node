@@ -13,7 +13,7 @@ describe("Create car specification", () => {
     specificationsRepositoryInMemory = new SpecificationsRepositoryInMemory();
     createCarSpecificationUseCase = new CreateCarSpecificationUseCase(
       carsRepositoryInMemory,
-      specificationsRepositoryInMemory
+      specificationsRepositoryInMemory,
     );
   });
 

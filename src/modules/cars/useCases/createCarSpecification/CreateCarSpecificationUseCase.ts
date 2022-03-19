@@ -17,7 +17,7 @@ class CreateCarSpecificationUseCase {
     private carsRepository: ICarsRepository,
 
     @inject("SpecificationRepository")
-    private specificationsRepository: ISpecificationsRepository
+    private specificationsRepository: ISpecificationsRepository,
   ) {}
 
   async execute({ car_id, specifications_id }: IRequest): Promise<Car> {
@@ -26,7 +26,7 @@ class CreateCarSpecificationUseCase {
     if (!carExists) throw new AppError("Car does not exists");
 
     const specifications = await this.specificationsRepository.findByIds(
-      specifications_id
+      specifications_id,
     );
 
     carExists.specifications = specifications;

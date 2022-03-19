@@ -10,7 +10,7 @@ import { ICarsRepository } from "@modules/cars/repositories/ICarsRepository";
 class CreateCarUseCase {
   constructor(
     @inject("CarsRepository")
-    private carsRepository: ICarsRepository
+    private carsRepository: ICarsRepository,
   ) {}
 
   async execute({
@@ -23,7 +23,7 @@ class CreateCarUseCase {
     category_id,
   }: ICreateCarDTO): Promise<Car> {
     const carAlreadyExists = await this.carsRepository.findByLicensePlate(
-      license_plate
+      license_plate,
     );
 
     if (carAlreadyExists) throw new AppError("Car already exists");

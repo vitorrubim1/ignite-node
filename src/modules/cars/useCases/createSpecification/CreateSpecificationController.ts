@@ -8,7 +8,7 @@ class CreateSpecificationController {
     const { name, description } = request.body;
 
     const createSpecificationUseCase = container.resolve(
-      CreateSpecificationUseCase
+      CreateSpecificationUseCase,
     );
 
     await createSpecificationUseCase.execute({ name, description });

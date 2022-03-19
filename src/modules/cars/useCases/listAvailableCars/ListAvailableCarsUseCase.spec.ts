@@ -8,7 +8,7 @@ describe("List cars", () => {
   beforeEach(() => {
     carsRepositoryInMemory = new CarsRepositoryInMemory();
     listAvailableCarsUseCase = new ListAvailableCarsUseCase(
-      carsRepositoryInMemory
+      carsRepositoryInMemory,
     );
   });
 

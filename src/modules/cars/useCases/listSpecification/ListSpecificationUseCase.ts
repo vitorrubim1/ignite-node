@@ -7,7 +7,7 @@ import { ISpecificationsRepository } from "@modules/cars/repositories/ISpecifica
 class ListSpecificationUseCase {
   constructor(
     @inject("SpecificationRepository")
-    private specificationRepository: ISpecificationsRepository
+    private specificationRepository: ISpecificationsRepository,
   ) {}
 
   async execute(): Promise<Specification[]> {

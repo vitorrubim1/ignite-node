@@ -9,7 +9,7 @@ class CreateCarSpecificationController {
     const { specifications_id } = request.body;
 
     const createCarSpecificationUseCase = container.resolve(
-      CreateCarSpecificationUseCase
+      CreateCarSpecificationUseCase,
     );
 
     const cars = await createCarSpecificationUseCase.execute({

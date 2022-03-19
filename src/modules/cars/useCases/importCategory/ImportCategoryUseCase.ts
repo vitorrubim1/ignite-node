@@ -13,7 +13,7 @@ interface IImportCategory {
 class ImportCategoryUseCase {
   constructor(
     @inject("CategoriesRepository")
-    private categoriesRepository: ICategoriesRepository
+    private categoriesRepository: ICategoriesRepository,
   ) {}
 
   loadCategories(file: Express.Multer.File): Promise<IImportCategory[]> {
@@ -27,7 +27,7 @@ class ImportCategoryUseCase {
 
       // Varredura no arquivo
       parseFile
-        .on("data", async (line) => {
+        .on("data", async line => {
           const [name, description] = line;
 
           categories.push({ name, description });
@@ -36,16 +36,16 @@ class ImportCategoryUseCase {
           fs.promises.unlink(file.path); // Dps do arquivo ser lido, remove-o
           resolve(categories);
         })
-        .on("error", (err) => reject(err));
+        .on("error", err => reject(err));
     });
   }
 
   async execute(file: Express.Multer.File): Promise<void> {
     const categories = await this.loadCategories(file);
 
-    categories.map(async (category) => {
+    categories.map(async category => {
       const alreadyExistCategory = await this.categoriesRepository.findByName(
-        category.name
+        category.name,
       );
 
       if (!alreadyExistCategory) {
