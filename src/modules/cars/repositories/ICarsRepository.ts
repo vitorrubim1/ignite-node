@@ -7,7 +7,8 @@ export interface ICarsRepository {
   findAvailable(
     brand?: string,
     category_id?: string,
-    name?: string
+    name?: string,
   ): Promise<Car[]>;
   findById(car_id: string): Promise<Car | undefined>;
+  updateAvailable(car_id: string, available: boolean): Promise<void>;
 }
