@@ -9,7 +9,7 @@ import { IUsersRepository } from "@modules/accounts/repositories/IUsersRepositor
 class CreateUserUseCase {
   constructor(
     @inject("UsersRepository")
-    private usersRepository: IUsersRepository
+    private usersRepository: IUsersRepository,
   ) {}
 
   async execute({
