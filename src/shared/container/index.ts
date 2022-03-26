@@ -26,6 +26,10 @@ import { CarsImagesRepository } from "@modules/cars/infra/typeorm/repositories/C
 import { IRentalsRepository } from "@modules/rentals/infra/typeorm/repositories/IRentalsRepository";
 import { RentalsRepository } from "@modules/rentals/repositories/RentalsRepository";
 
+// Refresh token
+import { UsersTokensRepository } from "@modules/accounts/infra/typeorm/repositories/UsersTokensRepository";
+import { IUsersTokensRepository } from "@modules/accounts/repositories/IUsersTokensRepository";
+
 /** <>: Tipo do container. (""): Qualquer nome pro container. (): Classe do container criado */
 
 // Category
@@ -59,4 +63,10 @@ container.registerSingleton<ICarsImagesRepository>(
 container.registerSingleton<IRentalsRepository>(
   "RentalsRepository",
   RentalsRepository,
+);
+
+// Refresh token
+container.registerSingleton<IUsersTokensRepository>(
+  "UsersTokensRepository",
+  UsersTokensRepository,
 );
